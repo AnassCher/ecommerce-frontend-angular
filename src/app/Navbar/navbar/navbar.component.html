@@ -1,0 +1,25 @@
+<div class="containe">
+  <div class="items">
+    
+    <div class="HOME">
+      
+      <a href=""><img src="/assets/Brand.png" alt="website logo"></a>
+    </div>
+    <div class="CARTE" >
+      <a href="/cart">CARTE</a>
+    </div>
+    <div class="Dashboard" >
+      <a href="/profile" >PROFILE</a>
+    </div>
+  </div>
+  <div class="right">
+    <div class="Dash" *ngIf="Role">
+      <a href="/admin"><img src="/assets/Dash.png"></a>
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Search by name, Category" [(ngModel)]="searchTerm" (change)="search()"/>
+      <button (click)="search()">Search</button>
+    </div>
+  </div>
+  
+</div>

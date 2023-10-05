@@ -1,0 +1,35 @@
+<div class="body">
+    <div class="image">
+        <img src="{{data.img}}">
+    </div>
+    <div class="details">
+        <div class="name">{{data.name}}</div>
+        <div class="two">
+            <div class="price">{{data.price | currency}}</div>
+            <div class="shipping">Free shipping</div>
+        </div>
+        <div class="rating" >
+            <i class="fas fa-star" style="font-size: 18px; color: rgb(255, 210, 48);"></i>
+            <i class="fas fa-star" style="font-size: 18px; color: rgb(255, 210, 48);"></i>
+            <i class="fas fa-star" style="font-size: 18px; color: rgb(255, 210, 48);"></i>
+            <i class="fas fa-star" style="font-size: 18px; color: rgb(255, 210, 48);"></i>
+            <i class="fas fa-star" style="font-size: 18px; color: rgb(255, 210, 48);"></i>
+            {{data.rating}}           
+        </div>
+        <div class="description">{{data.description}}</div>
+        <div class="add">
+            <button (click)="addToCart(data.id)">Add To wishlist</button>
+        </div>
+    </div>
+</div>
+<div class="suggetion">
+    <p>You might also like</p>
+    <div>
+        <div class="pics" *ngFor="let product of products">
+            <div *ngIf="product.id != data.id">
+                <img src="{{product.img}}">
+            </div>
+        </div>
+    </div>
+    
+</div>

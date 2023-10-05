@@ -1,0 +1,100 @@
+<div class="all">
+    <div class="information">
+        <div class="info">INFORMATIONS</div>
+        <div>
+            <label>NAME :</label>
+            <div class="id">{{user.name}}</div>
+        </div>
+        <div>
+            <label>USERNAME :</label>
+            <div class="id">{{user.username}}</div>
+        </div>
+        <div>
+            <label>EMAIL :</label>
+            <div class="id">{{user.email}}</div>
+        </div>
+        <div>
+            <label>ADDRESS :</label>
+            <div class="id">{{user.address}}</div>
+        </div>
+        <div>
+            <label>PHONE :</label>
+            <div class="id">{{user.tel}}</div>
+        </div>
+    </div>
+    <div class="buttons">
+        <button class="showForm-button" (click)="showFormPass =true">
+            CHANGE PASSWORD
+        </button>
+        <button class="showForm-button" (click)="showform()">
+            UPDATE  INFORMATIONS
+        </button>
+    </div>
+</div>
+<div class="update-information" *ngIf="showForm">
+    <div class="change">
+        <h1>NEW INFORMATIONS ?</h1>
+    <form id="login-form" [formGroup]="updateForm" (ngSubmit)="update()">
+        <div class="form-group">
+            <label for="name">Name :</label>
+            <input type="text" placeholder="Enter name" minlength="3" formControlName="name" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Address :</label>
+            <input type="text" placeholder="Enter address" formControlName="address" required>
+        </div>
+        <div class="form-group">
+            <label for="tel">Phone :</label>
+            <input type="text" placeholder="##########" minlength="8" formControlName="tel" required>
+        </div>
+        <div class="form-group">
+            <label for="email">email :</label>
+            <input type="email" placeholder="example@gmail.com" formControlName="email" required>
+        </div>
+        <div class="form-group">
+            <label for="username">Username :</label>
+            <input type="text" placeholder="Enter username" minlength="6" formControlName="username" required>
+            <div></div>
+            <div class="error2">{{error}}</div>
+        </div>
+        <div class="button">
+            <button (click)="showForm=false" class="submit-button">CANCEL</button>
+            <button type="submit" class="submit-button" [disabled]="updateForm.invalid">SUBMIT</button>
+        </div>
+     </form>
+     
+
+    </div>
+    
+
+</div>
+<div class="update-information" *ngIf="showFormPass">
+    <div class="change">
+        <h1>NEW PASSWORD ?</h1>
+    <form id="login-form" [formGroup]="updatePassword" (ngSubmit)="updatePasswordF()">
+        <div class="form-group">
+            <label class="lab" for="old_pass">OLD PASSWORD :</label>
+            <input type="password" placeholder="**********"  formControlName="old_pass" required>
+        </div>
+        <div class="form-group">
+            <label class="lab" for="new_pass">NEW PASSWORD :</label>
+            <input type="password" placeholder="**********" minlength="8" formControlName="new_pass" required>
+            
+        </div>
+        <div class="form-group">
+            <label class="lab" for="confirm">CONFIRM :</label>
+            <input type="password" placeholder="**********" minlength="8" formControlName="confirm" required>
+            <div></div>
+            <div class="error">{{error1}}</div>
+        </div>
+        <div class="button">
+            <button (click)="showFormPass=false" class="submit-button">CANCEL</button>
+            <button type="submit" class="submit-button" [disabled]="updatePassword.invalid">SUBMIT</button>
+        </div>
+     </form>
+     
+
+    </div>
+</div>
+
+

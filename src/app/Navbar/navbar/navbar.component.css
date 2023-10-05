@@ -1,0 +1,110 @@
+.containe{
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  color: white;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+}
+a{
+  color: white;
+  outline: none;
+  text-decoration: none;
+}
+a:hover{
+  outline: none;
+  text-decoration: none;
+}
+.items{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  justify-items: center;
+  align-items: center;
+  padding-left: 1rem;
+  gap: 10px;
+  font-weight: 600;
+}
+.right{
+  position: absolute;
+  right: 0;
+  padding-right: .5rem;
+  display: flex;
+  gap: 8px;
+}
+input{
+  border-radius:  .8rem 0 0 .8rem ;
+  outline: none;
+  border: 1px solid #eee;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: medium;
+  font-weight: 200;
+  padding-left: .5rem;
+  width: 10rem;
+
+}
+button{
+  border-radius: 0 .8rem .8rem 0;
+  outline: none;
+  font-size: medium;
+  background-color: bisque;
+  color: black;
+  text-decoration: none;
+  opacity: .7;
+}
+button:hover{
+  opacity: 1;
+  cursor: pointer;
+}
+button:focus{
+  outline: none;
+}
+
+.HOME img{
+  width: 3rem;
+  
+}
+.Dash{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Dash img{
+  width: 28px;
+}
+
+@media (max-width : 550px){
+  .containe{
+    grid-template-columns: 1fr ;
+    height: 5.9rem;
+    gap: 1px;
+  }
+  .items{
+    padding-right: 1rem;
+    padding-left: 0;
+  }
+  .right{
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+}
+@media(max-width : 370px){
+  input{
+    font-size: small;
+  }
+  .items{
+    font-size: small;
+  }
+
+}
+@media(max-width : 290px){
+  .Dash img{
+    width: 25px;
+  }
+  .right{
+    padding-right: 0;
+  }
+}

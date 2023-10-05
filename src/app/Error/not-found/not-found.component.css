@@ -1,0 +1,48 @@
+.plan{
+    margin-top: 15rem;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.plan div{
+    font-size: 2rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+button{
+    width: 10rem;
+    height: 3rem;
+    background-color: black;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 1px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    box-shadow: 4px 6px rgb(148, 148, 148);
+}
+button:hover{
+    transform: translateY(-3px);
+}
+
+@media(max-width : 500px) {
+    .plan div{
+        font-size: 1.2rem;
+    }
+    button{
+        font-size: .8rem;
+        width: 8rem;
+    }
+}
+@media(max-width : 300px) {
+    .plan div{
+        font-size: 1.1rem;
+    }
+}
+

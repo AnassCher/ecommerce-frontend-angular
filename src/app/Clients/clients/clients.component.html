@@ -1,0 +1,440 @@
+<!--<app-header></app-header>-->
+
+<body>
+  
+  <div class="data">
+    <div>Earnings: <br>{{earns | currency}}</div>
+    <div>Orders: <br>{{or}}</div>
+    <div>Users: <br>{{us}}</div>
+    <div>Products: <br>{{pr}}</div>
+  </div>
+  <div class="side-bar">
+    <div (click)="choose(1)"><span></span><span></span> Clients</div>
+    <div (click)="choose(2)">Products</div>
+    <div (click)="choose(3)">Orders</div>
+    <div (click)="choose(4)"><span></span><span></span>Categories<span></span><span></span><span></span><span></span></div>
+  </div>
+  <div  id="Clients">
+    <div class="SearchBar">
+      <input type="text" placeholder="Search by username" [(ngModel)]="searchPrime" (change)="search()">
+      <button class="search-button" (click)="search()">Search</button>
+    </div>
+          <div class="containe">
+              <ul style="white-space: nowrap;" class="clients">
+                <li class="users">
+                  
+                  <div>USERNAME</div>
+                  <div>EMAIL</div>
+                  <div>PHONE</div>
+                  <div>UPDATE</div>
+                  <div>DELETE</div>
+                  <div>ROLE</div>
+                </li>
+                  <li class="detail" *ngFor="let user of clients " style="white-space: nowrap;">
+                      
+                          
+          
+                          <div class="id"><img id="star" *ngIf = "user.roles.length == 2" src="/assets/admin.png">{{user.username}} </div>
+          
+                          
+                      
+                          <div class="id">{{user.email}} </div>
+                      
+                          
+                          <div class="id" style="white-space: nowrap;">{{user.tel}} </div>
+                      
+                      
+                          <div>
+                            <button  class="update-button"(click)="updateForm(user.username)">
+                              <img src="/assets/update-removebg-preview.png"/>
+                            </button>
+                          </div>
+                          
+                          <div>
+                            <button class="remove-button" (click)="removeForm(user.id)">
+                              <img src="/assets/delete-removebg-preview.png"/>
+                            </button>
+                          </div>
+
+                          <div>
+                            <button *ngIf = "user.roles.length == 1" class="remove-button" (click)="showRole(user.id)">
+                              <img src="/assets/role.png"/>
+                            </button>
+                          </div>
+                      
+                  </li>
+              </ul>
+          </div>
+          <div class="popup-form" *ngIf="showForm" >
+              <div class="form-content">
+                <h2>Modify informations</h2>
+                <form [formGroup]="formLogin" (ngSubmit)="update()">
+                  <div>
+                      <label>ID: </label><input type="text" formControlName="id" placeholder="Enter your id" required="true" readonly >
+                  </div>
+                  <div>
+                      <label>Name:</label> <input type="text" formControlName="nom" placeholder="Enter your name" required="true">
+                  </div>
+                  <div>
+                      <label>Username:</label><input type="text" formControlName="username" placeholder="Enter your username" required="true">
+                  </div>
+                  <div>
+                      <label>Email:</label><input type="email" formControlName="email" inputmode="email" placeholder="Enter your email" required="true">
+                  </div>
+                  <div>
+                    <label>Tel:</label><input type="tel" formControlName="tel" minlength="8" inputmode="tel" placeholder="Enter your tel" required="true">
+                </div>
+                  <div>
+                      <button class="form" id="cancel" (click)="showForm = false">Cancel</button>
+                      <button class="form" type="submit" [disabled]="formLogin.invalid">Submit</button>
+                  </div>
+                </form>
+              </div>
+          </div>
+          <div class="popup-form" *ngIf="formAlert">
+              <div class="form-content">
+                <h2 style="color: red;">Delete Alert</h2>
+                <form class="st">
+                  <div style="font-size: small; text-align: center;">Are you sure !?</div>
+                  <div class="button-container">
+                    <button class="form1" id="cancel2" (click)="formAlert = false">Cancel</button>
+                    <button class="form1" type="submit" (click)="remove()">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="popup-form" *ngIf="formRole">
+              <div class="form-content">
+                <h2>Add Admin Role</h2>
+                <form class="st">
+                  <div style="font-size: small; text-align: center;">Are you sure !?</div>
+                  <div class="button-container">
+                    <button class="form1" id="cancel2" (click)="formRole = false">Cancel</button>
+                    <button class="form1" type="submit" (click)="addRole()">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+  </div>
+  <div class="Products" id="Products">
+    <div class="SearchBar">
+      <input type="text" placeholder="Search by name" [(ngModel)]="searchPrimeP" (change)="searchP()">
+      <button class="search-button" (click)="searchP()">Search</button>
+      
+    </div>
+    <div class="AddProduct">
+      <button class="glow-on-hover" (click)="showFormPC =true">Add Product</button>
+    </div>
+    <ul class="prs">
+      <li class="products">
+        
+        <div>IMAGE</div>
+        <div>NAME</div>
+        <div>PRICE</div>
+        <div>DESCRIPTION</div>
+        
+        <div>RATING</div>
+        <div>UPDATE</div>
+        <div>DELETE</div>
+        
+      </li>
+      <li *ngFor="let product of Products " class="items">
+            
+                <div class="prImg"><img src="{{product.img}}" alt="product image"> </div>
+
+                
+
+                <div class="prName">{{product.name}} </div>
+            
+                
+                <div class="prPrice">{{product.price}} </div>
+                
+                <div class="prDes" style="white-space: nowrap;">{{product.description}} </div>
+
+
+                <div class="prRat">{{product.rating}} </div>
+            
+            
+                <div class="id">
+                  <button  class="update-button"(click)="updateProduct(product.id)">
+                    <img src="/assets/update-removebg-preview.png"/>
+                  </button>
+                </div>
+                
+                <div class="id">
+                  <button class="remove-button" (click)="removeProduct(product.id)">
+                    <img src="/assets/delete-removebg-preview.png"/>
+                  </button>
+                </div>
+      </li>
+    </ul>
+    <div class="popup-form" *ngIf="showFormP && categories.length > 0" >
+      <div class="form-content">
+        <h2>Modify informations</h2>
+        <form [formGroup]="formLoginP" (ngSubmit)="updateP()">
+          <div>
+              <label>ID: </label><input type="text" formControlName="id" placeholder="Enter id" required="true" readonly >
+          </div>
+          <div>
+              <label>Name:</label> <input type="text" formControlName="name" placeholder="Enter name" required="true">
+          </div>
+          <div>
+            <label>Image:</label><input type="text" formControlName="img" inputmode="url" placeholder="Enter description" required="true">
+          </div>
+          
+          <div>
+              <label>Price:</label><input type="text" formControlName="price" inputmode="numeric" placeholder="Enter  price" required="true">
+          </div>
+          <div>
+            <label>Rating:</label><input type="text" formControlName="rating" inputmode="numeric" placeholder="Enter rating" required="true">
+          </div>
+          <div>
+            <label>Category</label>
+            <select formControlName="category">
+              <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
+            </select>
+          </div>
+          <div>
+            <label>Description:</label><textarea type="textarea" formControlName="description" placeholder="Enter description" required="true"></textarea>
+          </div>
+          <div>
+              <button class="form" id="cancel" (click)="cancel()">Cancel</button>
+              <button class="form" type="submit" [disabled]="formLoginP.invalid">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="popup-form" *ngIf="formAlertP">
+        <div class="form-content">
+          <h2 style="color: red;">Delete Alert</h2>
+          <form class="st">
+            <div style="font-size: small; text-align: center;">Are you sure !?</div>
+            <div class="button-container">
+              <button class="form1" id="cancel2" (click)="formAlertP = false">Cancel</button>
+              <button class="form1" type="submit" (click)="removeP()">Submit</button>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="popup-form" *ngIf="showFormPC && categories.length > 0" >
+      <div class="form-content">
+        <h2>CREATE PRODUCT</h2>
+        <form [formGroup]="formLoginPC" (ngSubmit)="createP()">
+          
+          <div>
+              <label>Name:</label> <input type="text" formControlName="nameP" placeholder="Enter name" required="true">
+          </div>
+          <div>
+            <label>Image:</label><input type="file" formControlName="imgP" inputmode="url" placeholder="Choose image" required="true">
+          </div>
+          
+          <div>
+              <label>Price:</label><input type="text" formControlName="priceP" inputmode="numeric" placeholder="Enter  price" required="true">
+          </div>
+          <div>
+            <label>Rating:</label><input type="text" formControlName="ratingP" inputmode="numeric" placeholder="Enter rating" required="true">
+          </div>
+          <div>
+            <label>Category</label>
+            <select formControlName="categoryP">
+              <option value="1">Choose category</option>
+              <option *ngFor="let cat of categories" [value]="cat.name">{{cat.name}}</option>
+            </select>
+          </div>
+          <div>
+            <label>Description:</label><textarea type="textarea" formControlName="descriptionP" placeholder="Enter description" required="true"></textarea>
+          </div>
+          <div>
+              <button class="form" id="cancel" (click)="showFormPC = false">Cancel</button>
+              <button class="form" type="submit" [disabled]="formLoginPC.invalid">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="Orders" id="Orders" >
+    <div class="SearchBar">
+      <input type="text" placeholder="Search by status, owner" [(ngModel)]="searchOrder" (change)="searchO()">
+      <button class="search-button" (click)="searchO()">Search</button>
+    </div>
+    <div class="containe_panier">
+              <ul class="paniers">
+                <li class="info">
+                  
+                  <div>OWNER</div>
+                  <div>PRODUCT</div>
+                  <div>QUANTITY</div>
+                  <div>DATE</div>
+                  <div>STATUS</div>
+                  <div>UPDATE</div>
+                  <div>DELETE</div>
+                </li>
+                <li class="panier_details" *ngFor="let panier of Paniers">
+                      
+                          
+          
+                          <div class="id">{{panier.client.username}} </div>
+          
+                          
+                      
+                          <div class="id">{{panier.product.name}} </div>
+                      
+                          
+                          <div class="id">{{panier.quantity}} </div>
+                      
+                          <div class="id">{{panier.timestamp}} </div>
+
+                          <div class="id" [ngStyle]="StatusColor(panier.status)">{{panier.status}} </div>
+                      
+                          <div>
+                            <button  class="update-button" (click)="updateO(panier.Id)">
+                              <img src="/assets/update-removebg-preview.png"/>
+                            </button>
+                          </div>
+                          
+                          <div>
+                            <button class="remove-button" (click)="removeO(panier.Id)">
+                              <img src="/assets/delete-removebg-preview.png"/>
+                            </button>
+                          </div>
+                </li>
+              </ul>
+    </div>
+    <div class="popup-form" *ngIf="showFormO" >
+      <div class="form-content">
+        <h2>Modify informations</h2>
+        <form [formGroup]="formLoginO" (ngSubmit)="updateOr()">
+          <div>
+              <label>ID: </label><input type="text" formControlName="Id" placeholder="Enter your id" required="true" readonly >
+          </div>
+          <div>
+              <label>Owner:</label> <input type="text" formControlName="owner" placeholder="Enter order owner" required="true" readonly>
+          </div>
+          <div>
+              <label>Product:</label><input type="text" formControlName="prodName" placeholder="Enter product name" required="true">
+          </div>
+          <div>
+              <label>Quantity:</label><input type="number" min="1" inputmode="numeric" formControlName="quantity" placeholder="Specify quantity" required="true">
+          </div>
+          
+        <div>
+          <label>Status</label>
+          <select formControlName="Status">
+            <option [value]="AllStatus[0]">Pending</option>
+            <option [value]="AllStatus[1]">Processing</option>
+            <option [value]="AllStatus[2]">Completed</option>
+            <option [value]="AllStatus[3]">Cancelled</option>
+            <option [value]="AllStatus[4]">Shipped</option>
+          </select>
+        </div>
+          <div>
+              <button class="form" id="cancel" (click)="showFormO = false">Cancel</button>
+              <button class="form" type="submit" [disabled]="formLoginO.invalid">Submit</button>
+          </div>
+        </form>
+      </div>
+  </div> 
+    <div class="popup-form" *ngIf="formAlertO">
+      <div class="form-content">
+        <h2 style="color: red;">Delete Alert</h2>
+        <form class="st">
+          <div style="font-size: small; text-align: center;">Are you sure !?</div>
+          <div class="button-container">
+            <button class="form1" id="cancel2" (click)="formAlertO = false">Cancel</button>
+            <button class="form1" type="submit" (click)="removeOr()">Submit</button>
+          </div>
+        </form>
+      </div>
+  </div> 
+  </div>
+  <div class="Categories" id="Categories" >
+    <div class="SearchBar">
+      <input type="text" placeholder="Search name" [(ngModel)]="searchCategory" (change)="searchCat()">
+      <button class="search-button" (click)="searchCat()">Search</button>
+    </div>
+    <div class="AddProduct">
+      <button class="glow-on-hover" (click)="showFormCg =true">Add Category</button>
+    </div>
+    <div class="Cont_Cats">
+      <ul class="cats">
+        <li class="info_cat">
+          
+          <div>ID</div>
+          <div>Category</div>
+          <div>UPDATE</div>
+          <div>DELETE</div>
+        </li>
+        <li class="panier_details" *ngFor="let categ of categories">
+              
+                  
+  
+                  <div class="id">{{categ.id}} </div>
+  
+                  
+              
+                  <div class="id">{{categ.name}} </div>
+              
+                  
+                  
+              
+                  <div>
+                    <button  class="update-button" (click)="updateC(categ.id)" >
+                      <img src="/assets/update-removebg-preview.png"/>
+                    </button>
+                  </div>
+                  
+                  <div>
+                    <button class="remove-button" (click)="deleteC(categ.id)">
+                      <img src="/assets/delete-removebg-preview.png"/>
+                    </button>
+                  </div>
+        </li>
+      </ul>
+    </div>
+    <div class="popup-form" *ngIf="showFormCg" >
+      <div class="form-content">
+        <h2>CREATE CATEGORY</h2>
+        <form [formGroup]="formLoginCg" (ngSubmit)="createCg()">
+          
+          <div>
+              <label>Name:</label> <input type="text" formControlName="name" placeholder="Enter Category name" required="true">
+          </div>
+          <div>
+              <button class="form" id="cancel" (click)="showFormCg = false">Cancel</button>
+              <button class="form" type="submit" [disabled]="formLoginCg.invalid">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup-form" *ngIf="showFormCg2" >
+      <div class="form-content">
+        <h2>Modify informations</h2>
+        <form [formGroup]="formLoginCg2" (ngSubmit)="updateCg()">
+          <div>
+            <label>Id:</label> <input type="text" formControlName="id" readonly>
+        </div>
+          <div>
+              <label>Name:</label> <input type="text" formControlName="name" placeholder="Enter Category name" required="true">
+          </div>
+          <div>
+              <button class="form" id="cancel" (click)="showFormCg2 = false">Cancel</button>
+              <button class="form" type="submit" [disabled]="formLoginCg2.invalid">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="popup-form" *ngIf="formAlertCg">
+      <div class="form-content">
+        <h2 style="color: red;">Delete Alert</h2>
+        <form class="st">
+          <div style="font-size: small; text-align: center;">Are you sure !?</div>
+          <div class="button-container">
+            <button class="form1" id="cancel2" (click)="formAlertCg = false">Cancel</button>
+            <button class="form1" type="submit" (click)="deleteCg()">Submit</button>
+          </div>
+        </form>
+      </div>
+  </div> 
+  </div>  
+</body>

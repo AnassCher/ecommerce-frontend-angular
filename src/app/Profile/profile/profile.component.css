@@ -1,0 +1,229 @@
+.all{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    margin-top: 2rem;
+}
+.information{
+    box-shadow: 4px 4px rgb(165, 165, 165);
+    width: 30rem;
+    display: grid;
+    align-items: center;
+    padding-left: 20px;
+    gap: 10px;
+    background-color:rgb(233, 233, 233);
+    height: 40rem;
+    padding-bottom: 20px;
+}
+.information div{
+    height: 2rem;
+    display: grid;
+    align-items: center;
+    gap: 10px;
+}
+.info{
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 800;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    letter-spacing: 1px;
+}
+.id{
+    box-shadow: 4px 6px rgb(173, 172, 172);
+    border-radius: 12px;
+    text-align: center;
+    margin-right: 15px;
+    background-color: black;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+label{
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+}
+
+.showForm-button{
+    height: 50px;
+    width : 17rem;
+    word-spacing: 8px;
+    font-size: 1.3rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border: none;
+    outline: none;
+    background-color: black;
+    color:rgb(197, 194, 194);
+    border-radius: 10px;
+    
+}
+.showForm-button:hover{
+    color: white;
+    transform: translateY(-5px);
+}
+
+
+
+.update-information{
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.change{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    
+}
+h1{
+    padding: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 1px;
+}
+.form-group{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+}
+form{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 20px;
+}
+.button{
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+label{
+    letter-spacing: 1px;
+    font-size: larger;
+}
+input{
+    outline: none;
+    padding-left: 5px;
+    border-radius: 6px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    letter-spacing: 1px;
+}
+.submit-button{
+    background-color: rgb(47, 47, 47);
+    color: rgb(230, 230, 230);
+    border-radius: 10px;
+    width: 8rem;
+    height: 2.2rem;
+    
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    outline: none;
+    font-family:  Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.lab{
+    font-size: medium;
+}
+.error{
+    display: flex;
+    padding-left: 6px;
+    width : 9rem;
+    color: red;
+    font-size: smaller;
+}
+.error2{
+    width: 10rem;
+    font-size: smaller;
+    color: red;
+    padding-left: 6px;
+    
+}
+@media(max-width : 830px){
+    .all{
+        grid-template-columns: 1fr;
+        gap: 50px;
+        margin-bottom: 2rem;
+    }
+}
+@media(max-width : 500px){
+    .information{
+        width: 20rem;
+    }
+    label{
+        font-size: small;
+    }
+    form{
+        width: 100%;
+    }
+    .lab{
+        font-size: small;
+    }
+    h1{
+        white-space: nowrap;
+    }
+    .form-group{
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    .submit-button{
+        width: 5rem;
+        font-size: medium;
+    }
+    .error{
+        margin-top: -1.1rem;
+    }
+    .error2{
+        margin-top: -1.1rem;
+    }
+}
+
+@media(max-width : 400px) {
+    .information{
+        width: 15rem;
+    }
+    .info{
+        text-align: left;
+    }
+    .id{
+        font-size: small;
+    }
+
+    .showForm-button{
+        width: 12rem;
+        font-size: 1rem;
+    }
+    h1{
+        
+        font-size: larger;
+    }
+    input{
+        font-size: medium;
+
+    }
+    .showForm-button:hover{
+        animation: none;
+    }
+
+}

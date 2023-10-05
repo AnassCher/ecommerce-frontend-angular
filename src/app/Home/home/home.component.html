@@ -1,0 +1,33 @@
+<section style="background-color: #eee;">
+    <div class="containe">
+        <div id="test">
+            
+                <div class="row" *ngFor="let product of products">
+                    <div class="im">
+                        <img src="{{product.img}}" class="w-100" />
+                        
+                    </div>
+                    <div class="name">
+                        <h5>{{product.name}}</h5>
+                        
+                        <p class="description">
+                            {{product.description}}
+                        </p>
+                    </div>
+                    <div class="three">
+                        <div class="">
+                            <h4 class="price">{{product.price|currency}}</h4>
+                        </div>
+                        <h6 class="ship">Free shipping</h6>
+                        <div class="btns">
+                            <button class="btn1" type="button" (click)="details(product.id)">Details</button>
+                            <button class="btn2" type="button" (click)="buy(product.id)">
+                                Add to wishlist
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</section>

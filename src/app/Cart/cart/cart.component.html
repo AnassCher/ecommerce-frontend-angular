@@ -1,0 +1,36 @@
+
+<div class="containe">
+    <ul>
+        <li *ngFor="let cart of data ">
+            <div>
+                <img [src]="cart.product.img" [alt]="cart.product.name">
+            </div>
+            <div>
+                <a routerLink="/product/{{cart.product.id}}">
+                    {{cart.product.name}}
+                </a>
+            </div>
+            <div class="quantity">
+                <button (click)="updateQuantity(cart.Id, cart.quantity-1)" >-</button>
+                <input name="Quantity" [(ngModel)]="cart.quantity">
+                <button (click)="updateQuantity(cart.Id, cart.quantity+1)">+</button>
+            </div>
+            <div class="price">
+                {{ getPrice(cart.product.price,cart.quantity) |currency }}
+            </div>
+
+            <div>
+                <button class="remove-button" (click)="removeFromCart(cart.Id)">
+                    Remove
+                </button>
+            </div>
+        </li>
+    </ul>
+
+    <div class="checkout">
+        <div>
+            <div class="number">Total number: {{ (getCount() ) }}</div>
+            <div class="totalPrice">Total price: {{getTotalPrice() | currency}}</div>
+        </div>
+    </div>
+</div>

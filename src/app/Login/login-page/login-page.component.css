@@ -1,0 +1,81 @@
+.login-container{
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    background-color: rgb(223, 223, 223);
+    box-shadow: 4px 4px 4px rgb(37, 37, 37);
+    width: 20rem;
+    margin: auto;
+    
+    margin-top: 11rem;
+}
+h1{
+    margin-top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+}
+#login-form{
+    display: grid;
+    gap: 10px;
+}
+.form-group{
+    display: grid;
+    gap: 10px;
+}
+.button{
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+.link{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -8px;
+}
+a{
+    outline: none;
+    color: black;
+    font-size: small;
+}
+button{
+    width: 85px;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 35px;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: 1px;
+    
+}
+.register{
+    margin-bottom: 1rem;
+    font-size: small;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+input{
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: 5px;
+    outline: none;
+}
+.error{
+    font-size: smaller;
+    color: red;
+    margin-top: -15px;
+    width: 200px;
+    word-wrap: break-word;
+    text-align: center;
+    height: 30px;
+}
+
+@media (max-width : 400px){
+.login-container{
+    width: 15rem;
+    margin-top: 8rem;
+}
+}
